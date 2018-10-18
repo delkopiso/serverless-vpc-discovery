@@ -1,6 +1,6 @@
 {
   "name": "@delkopiso/serverless-vpc-discovery",
-  "version": "1.0.13",
+  "version": "2.0.0",
   "engines": {
     "node": ">=4.0"
   },
