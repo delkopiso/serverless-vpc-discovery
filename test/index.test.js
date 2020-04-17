@@ -7,7 +7,7 @@ const testData = require('./test-data.json');
 const emptyData = require('./empty-data.json');
 const VPCPlugin = require('../index.js');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 // Used for changing what to test
 const testCreds = {
@@ -42,6 +42,7 @@ const constructPlugin = (vpcConfig) => {
     providers: {
       aws: {
         getCredentials: () => new aws.Credentials(testCreds),
+        getRegion: () => 'us-north-2',
       },
     },
   };

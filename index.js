@@ -20,6 +20,7 @@ class VPCPlugin {
    */
   updateVpcConfig() {
     const awsCreds = this.serverless.providers.aws.getCredentials();
+    awsCreds.region = this.serverless.providers.aws.getRegion();
 
     AWS.config.update(awsCreds);
     AWS.config.update({
@@ -29,11 +30,11 @@ class VPCPlugin {
     this.ec2 = new AWS.EC2();
 
     this.serverless.cli.log('Updating VPC config...');
-    const service = this.serverless.service;
+    const { service } = this.serverless;
 
     // Checks if the serverless file is setup correctly
-    if (service.custom.vpc.vpcName == null || service.custom.vpc.subnetNames == null ||
-      service.custom.vpc.securityGroupNames == null) {
+    if (service.custom.vpc.vpcName == null || service.custom.vpc.subnetNames == null
+      || service.custom.vpc.securityGroupNames == null) {
       throw new Error('Serverless file is not configured correctly. Please see README for proper setup.');
     }
 
@@ -112,7 +113,7 @@ class VPCPlugin {
       if (paramsSubnet.Filters[1].Values.length !== data.Subnets.length) {
         // Creates a list of the valid subnets
         const validSubnets = data.Subnets.reduce((accum, val) => {
-          const nameTag = val.Tags.find(tag => tag.Key === 'Name');
+          const nameTag = val.Tags.find((tag) => tag.Key === 'Name');
 
           if (nameTag) {
             accum.push(nameTag.Value);
@@ -125,9 +126,7 @@ class VPCPlugin {
 
         throw new Error(`Not all subnets were registered: ${missingSubnets}`);
       }
-      const subnetIds = data.Subnets.map(obj => obj.SubnetId);
-
-      return subnetIds;
+      return data.Subnets.map((obj) => obj.SubnetId);
     });
   }
 
@@ -157,7 +156,7 @@ class VPCPlugin {
 
       if (paramsSecurity.Filters[1].Values.length !== data.SecurityGroups.length) {
         const validGroups = data.SecurityGroups.reduce((accum, val) => {
-          const nameTag = val.Tags.find(tag => tag.Key === 'Name');
+          const nameTag = val.Tags.find((tag) => tag.Key === 'Name');
 
           if (nameTag) {
             accum.push(nameTag.Value);
@@ -169,9 +168,7 @@ class VPCPlugin {
         throw new Error(`Not all security group were registered: ${missingGroups}`);
       }
 
-      const securityGroupIds = data.SecurityGroups.map(obj => obj.GroupId);
-
-      return securityGroupIds;
+      return data.SecurityGroups.map((obj) => obj.GroupId);
     });
   }
 }
