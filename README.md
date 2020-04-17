@@ -1,10 +1,8 @@
 # serverless-vpc-discovery
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
-[![Build Status](https://travis-ci.org/amplify-education/serverless-vpc-discovery.svg?branch=master)](https://travis-ci.org/amplify-education/serverless-vpc-discovery)
-[![npm version](https://badge.fury.io/js/serverless-vpc-discovery.svg)](https://badge.fury.io/js/serverless-vpc-discovery)
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/amplify-education/serverless-vpc-discovery/master/LICENSE)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c3ba87d04fe24b8f881252705e51cc29)](https://www.codacy.com/app/CFER/serverless-vpc-discovery?utm_source=github.com&utm_medium=referral&utm_content=amplify-education/serverless-vpc-discovery&utm_campaign=badger)
-[![npm downloads](https://img.shields.io/npm/dt/serverless-vpc-discovery.svg?style=flat)](https://www.npmjs.com/package/serverless-vpc-discovery)
+[![Build Status](https://github.com/delkopiso/serverless-vpc-discovery/workflows/Test/badge.svg)](https://github.com/delkopiso/serverless-vpc-discovery/actions?query=workflow%3ATest)
+[![npm version](https://badge.fury.io/js/%40delkopiso%2Fserverless-vpc-discovery.svg)](https://badge.fury.io/js/%40delkopiso%2Fserverless-vpc-discovery)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/delkopiso/serverless-vpc-discovery/master/LICENSE)
 
 The vpc discovery plugin takes the given vpc, subnet, and security group names in the serverless file to setup the vpc configuration for the lambda.
 
